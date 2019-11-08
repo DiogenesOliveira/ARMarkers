@@ -1,0 +1,201 @@
+<!doctype HTML>
+<html>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <!-- import events.js script -->
+    <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
+	
+	
+	<!-- Script para startar e pausar o video -->
+	<script>
+		AFRAME.registerComponent('vidhandler', {
+		init: function () {
+			this.toggle = false;
+			document.querySelector("#vid").pause(); //reference to the video
+		},
+		tick:function(){  
+			if(document.querySelector("a-marker").object3D.visible == true){
+				if(!this.toggle){
+					this.toggle = true;
+					document.querySelector("#vid").play();
+				}
+			}else{
+				this.toggle = false;
+				document.querySelector("#vid").pause();
+			}
+		}
+		});
+	</script>
+	
+	<script>
+		AFRAME.registerComponent('vidhandler2', {
+		init: function () {
+			this.toggle = false;
+			document.querySelector("#vid2").pause(); //reference to the video
+		},
+		tick:function(){  
+			if(document.querySelector("a-marker").object3D.visible == true){
+				if(!this.toggle){
+					this.toggle = true;
+					document.querySelector("#vid2").play();
+				}
+			}else{
+				this.toggle = false;
+				document.querySelector("#vid2").pause();
+			}
+		}
+		});
+	</script>
+	
+	<script>
+		AFRAME.registerComponent('vidhandler3', {
+		init: function () {
+			this.toggle = false;
+			document.querySelector("#vid3").pause(); //reference to the video
+		},
+		tick:function(){  
+			if(document.querySelector("a-marker").object3D.visible == true){
+				if(!this.toggle){
+					this.toggle = true;
+					document.querySelector("#vid3").play();
+				}
+			}else{
+				this.toggle = false;
+				document.querySelector("#vid3").pause();
+			}
+		}
+		});
+	</script>
+	
+	
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+    <body style='margin : 0px; overflow: hidden;'>
+        
+        <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+			
+			<!-- Video que será mostrado no Hiro -->
+			<a-assets>
+				<video id="vid" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/981e061cd76232ce94c156f15568b58c83905f49/Erick.mp4" ></video>
+				<video id="vid2" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/xtreme.mp4" ></video>
+				<video id="vid2" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/Video_HackaBrain.mp4" ></video>
+			</a-assets>
+			
+			
+						
+			
+			<!-- Video que será mostrado no Hiro -->
+			<a-marker preset='hiro' vidhandler>
+				<a-video src="#vid" width="2.25" height="4" rotation="90 180 0"></a-video>
+			</a-marker>
+			
+			
+			<!-- Barcode 0 Imagem do logo-->
+			<a-marker type='barcode' value='0'>
+				<a-box src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/981e061cd76232ce94c156f15568b58c83905f49/logo.jpg" position='0 0 0' scale="1.5 1.5 1.5"></a-box>
+                <!--<a-image src="img/0.jpg" position="0 0 0" rotation="270 0 0"></a-image>-->
+            </a-marker>
+			
+			<!-- Barcode 1 Imagem do time-->
+			<a-marker type='barcode' value='1'>
+                <a-image width="4" height="2.25" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/981e061cd76232ce94c156f15568b58c83905f49/time.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+			<!-- Barcode 2 Imagem BeCare-->
+			<a-marker type='barcode' value='2'>
+                <a-box src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/2a22abefaf7c07381490c9008553945de157b2ca/becare.jpg" position='0 0 0' scale="1.5 1.5 1.5"></a-box>
+            </a-marker>
+			
+			<!-- Barcode 3 Imagem BraInsights-->
+			<a-marker type='barcode' value='3'>
+                <a-box src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/2a22abefaf7c07381490c9008553945de157b2ca/brainsights.jpg" position='0 0 0' scale="1.5 1.5 1.5"></a-box>
+            </a-marker>
+			
+			<!-- Barcode 4 Imagem myWizard-->
+			<a-marker type='barcode' value='4'>
+                <a-box src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/2a22abefaf7c07381490c9008553945de157b2ca/mywizard.jpg" position='0 0 0' scale="2.5 1.5 1.5"></a-box>
+            </a-marker>
+			
+			<!-- Barcode 5 Imagem Tangram-->
+            <a-marker type='barcode' value='5'>
+                <a-box src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/2a22abefaf7c07381490c9008553945de157b2ca/tangram.jpg" position='0 0 0' scale="1.5 1.5 1.5"></a-box>
+            </a-marker>
+			
+			<!-- Barcode 6 Imagem Xtr3.me-->
+			<a-marker type='barcode' value='6'>
+                <a-box src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/2a22abefaf7c07381490c9008553945de157b2ca/xtreme.jpg" position='0 0 0' scale="1.5 1.5 1.5"></a-box>
+            </a-marker>
+			
+			<!-- Barcode 7 Imagem mesa1-->
+			<a-marker type='barcode' value='7'>
+                <a-image width="2.25" height="4" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/mesa1.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+
+			
+			<!-- Barcode 9 Imagem mesa2-->
+			<a-marker type='barcode' value='9'>
+                <a-image width="2.25" height="4" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/mesa2.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+			<!-- Barcode 10 Imagem mesa3-->
+			<a-marker type='barcode' value='10'>
+                <a-image width="2.25" height="4" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/mesa3.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+			<!-- Barcode 11 Imagem mesa4-->
+			<a-marker type='barcode' value='11'>
+                <a-image width="4" height="2.25" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/mesa4.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+			<!-- Barcode 12 Imagem mesa5-->
+			<a-marker type='barcode' value='12'>
+                <a-image width="4" height="2.25" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/mesa5.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+			<!-- Barcode 13 Imagem mesa6-->
+			<a-marker type='barcode' value='13'>
+                <a-image width="4" height="2.25" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/mesa6.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+			<!-- Barcode 14 Imagem mesa7-->
+			<a-marker type='barcode' value='14'>
+                <a-image width="4" height="2.25" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/mesa7.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+			<!-- Barcode 15 Imagem mesa8-->
+			<a-marker type='barcode' value='15'>
+                <a-image width="4" height="2.25" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/mesa8.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+			<!-- Barcode 16 Imagem mesa9-->
+			<a-marker type='barcode' value='16'>
+                <a-image width="2.25" height="4" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/mesa9.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+			<!-- Barcode 17 Imagem mesa10-->
+			<a-marker type='barcode' value='17'>
+                <a-image width="4" height="2.25" src="https://raw.githubusercontent.com/DiogenesOliveira/ARMarkers/269c92e60ea874df9792897f37318741af6558b2/mesa10.jpeg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+			<!-- Barcode 18 Video Xtr3me-->
+			<a-marker type='barcode' value='18' vidhandler2>
+                <a-video src="#vid2" width="2.25" height="4" rotation="90 180 0"></a-video>
+            </a-marker>
+			
+			<!-- Barcode 19 -->
+			<a-marker type='barcode' value='19' vidhandler3>
+                <a-video src="#vid3" width="2.25" height="4" rotation="90 180 0"></a-video>
+            </a-marker>
+			
+			<!-- Barcode 20 -->
+			<a-marker type='barcode' value='20'>
+                <a-image src="img/20.jpg" position="0 0 0" rotation="270 0 0"></a-image>
+            </a-marker>
+			
+         
+            <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</html>
